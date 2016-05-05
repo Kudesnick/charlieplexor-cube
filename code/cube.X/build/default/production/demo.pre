@@ -1,0 +1,133 @@
+
+# 1 "demo.c"
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 6 "img.h"
+typedef uint8_t imgbuf_t[8][8];
+
+typedef enum {
+sh_leftx,
+sh_lefty,
+sh_leftz,
+sh_rightx,
+sh_righty,
+sh_rightz,
+sh_ovf
+} shift_t;
+
+extern void img_copy(uint8_t p, uint8_t img[8][8]);
+extern void img_set(uint8_t mask, uint8_t img[8][8]);
+extern void img_inv(uint8_t img[8][8]);
+extern void img_xor(uint8_t x, uint8_t img[8][8]);
+extern void img_shift(shift_t sh, uint8_t img[8][8]);
+extern void img_setpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8], uint8_t val);
+extern uint8_t img_getpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8]);
+
+# 6 "demo.c"
+imgbuf_t image;
+
+void demo_init(void)
+{
+img_set(0xFF, image);
+img_copy(0, image);
+}
+
+void demo_monitor(void)
+{
+static uint16_t cnt = 0xFFFF;
+if (--cnt) return;
+cnt = 0xFFFF;
+{
+img_xor(0xFF, image);
+img_copy(0, image);
+}
+}

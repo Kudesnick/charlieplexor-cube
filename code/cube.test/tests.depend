@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1461160948 source:d:\personal\projects\charlieplexor\code\cube.x\map.c
+	"map.h"
+
+1460989203 d:\personal\projects\charlieplexor\code\cube.x\map.h
+	<stdint.h>
+
+1461234742 source:d:\personal\projects\charlieplexor\code\cube.x\scan.c
+	<xc.h>
+	<stdint.h>
+	"scan.h"
+	"map.h"
+
+1461151348 d:\personal\projects\charlieplexor\code\xc.h
+	<stdint.h>
+
+1461234742 d:\personal\projects\charlieplexor\code\cube.x\scan.h
+
+1461138387 source:d:\personal\projects\charlieplexor\code\main.c
+	<stdio.h>
+	<stdlib.h>
+	"scan_test.h"
+
+1461151348 d:\personal\projects\charlieplexor\code\\xc.h
+	<stdint.h>
+
+1461137181 source:d:\personal\projects\charlieplexor\code\xc.c
+	<stdint.h>
+	"xc.h"
+
+1461162317 d:\personal\projects\charlieplexor\code\scan_test.h
+	<stdint.h>
+	"cube.X/scan.h"
+	"cube.X/map.h"
+	"xc.h"
+
+1461234831 source:d:\personal\projects\charlieplexor\code\scan_test.c
+	<stdio.h>
+	<stdint.h>
+	"scan_test.h"
+

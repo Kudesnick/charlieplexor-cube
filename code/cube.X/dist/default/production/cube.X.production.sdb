@@ -1,0 +1,260 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877 ]
+[d frameptr 6 ]
+"38 D:\personal\Projects\charlieplexor-cube\code\cube.X\img.c
+[e E31 . `uc
+sh_leftx 0
+sh_lefty 1
+sh_leftz 2
+sh_rightx 3
+sh_righty 4
+sh_rightz 5
+sh_ovf 6
+]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"8 D:\personal\Projects\charlieplexor-cube\code\cube.X\demo.c
+[v _demo_init demo_init `(v  1 e 1 0 ]
+"14
+[v _demo_monitor demo_monitor `(v  1 e 1 0 ]
+"7 D:\personal\Projects\charlieplexor-cube\code\cube.X\img.c
+[v _img_copy img_copy `(v  1 e 1 0 ]
+"13
+[v _img_set img_set `(v  1 e 1 0 ]
+"29
+[v _img_xor img_xor `(v  1 e 1 0 ]
+"16 D:\personal\Projects\charlieplexor-cube\code\cube.X\main.c
+[v _tm0init tm0init `T(v  1 e 1 0 ]
+"29
+[v _main main `(v  1 e 1 0 ]
+"59
+[v _intrpt intrpt `II(v  1 e 1 0 ]
+"12 D:\personal\Projects\charlieplexor-cube\code\cube.X\scan.c
+[v _scan_irq scan_irq `(i  1 e 2 0 ]
+"71
+[v _scan_copy scan_copy `(v  1 e 1 0 ]
+"188 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
+[v ___timeout __timeout `b  1 e 0 0 ]
+"160 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S99 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"175
+[u S106 . 1 `S99 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES106  1 e 1 @5 ]
+"209
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"270
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"331
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"392
+[v _PORTE PORTE `VEuc  1 e 1 @9 ]
+[s S45 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"465
+[s S54 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S59 . 1 `S45 1 . 1 0 `S54 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES59  1 e 1 @11 ]
+[s S117 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 GO_nDONE 1 0 :1:2 
+`uc 1 CHS 1 0 :3:3 
+`uc 1 ADCS 1 0 :2:6 
+]
+"1150
+[s S123 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 GO 1 0 :1:2 
+`uc 1 CHS0 1 0 :1:3 
+`uc 1 CHS1 1 0 :1:4 
+`uc 1 CHS2 1 0 :1:5 
+`uc 1 ADCS0 1 0 :1:6 
+`uc 1 ADCS1 1 0 :1:7 
+]
+[s S131 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nDONE 1 0 :1:2 
+]
+[s S134 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 GO_DONE 1 0 :1:2 
+]
+[u S137 . 1 `S117 1 . 1 0 `S123 1 . 1 0 `S131 1 . 1 0 `S134 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES137  1 e 1 @31 ]
+[s S19 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+"1234
+[s S26 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S30 . 1 `S19 1 . 1 0 `S26 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES30  1 e 1 @129 ]
+"1283
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+[s S82 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1298
+[u S89 . 1 `S82 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES89  1 e 1 @133 ]
+"1332
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1393
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1454
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1515
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
+"2030
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"6 D:\personal\Projects\charlieplexor-cube\code\cube.X\demo.c
+[v _image image `[8][8]uc  1 e 64 0 ]
+[s S247 . 2 `DCCuc 1 col 1 0 :5:0 
+`DCCuc 1 row 1 0 :3:5 
+`DCCuc 1 mask 1 1 ]
+"3 D:\personal\Projects\charlieplexor-cube\code\cube.X\map.c
+[v _remap remap `DCC[8][8]S247  1 e 128 0 ]
+"6 D:\personal\Projects\charlieplexor-cube\code\cube.X\scan.c
+[v _buffer0 buffer0 `[3][24]uc  1 e 72 0 ]
+[v _buffer1 buffer1 `[3][24]uc  1 e 72 0 ]
+"7
+[v _out out `[2]*.5[3][24]uc  1 e 2 0 ]
+"8
+[v _ptr ptr `uc  1 e 1 0 ]
+"29 D:\personal\Projects\charlieplexor-cube\code\cube.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"55
+} 0
+"16
+[v _tm0init tm0init `T(v  1 e 1 0 ]
+{
+"25
+} 0
+"14 D:\personal\Projects\charlieplexor-cube\code\cube.X\demo.c
+[v _demo_monitor demo_monitor `(v  1 e 1 0 ]
+{
+"16
+[v demo_monitor@cnt cnt `ui  1 s 2 cnt ]
+"23
+} 0
+"29 D:\personal\Projects\charlieplexor-cube\code\cube.X\img.c
+[v _img_xor img_xor `(v  1 e 1 0 ]
+{
+[v img_xor@x x `uc  1 a 1 wreg ]
+"31
+[v img_xor@i i `i  1 a 2 3 ]
+"29
+[v img_xor@x x `uc  1 a 1 wreg ]
+[v img_xor@img img `*.4[8]uc  1 p 1 0 ]
+"32
+[v img_xor@x x `uc  1 a 1 2 ]
+"34
+} 0
+"8 D:\personal\Projects\charlieplexor-cube\code\cube.X\demo.c
+[v _demo_init demo_init `(v  1 e 1 0 ]
+{
+"12
+} 0
+"13 D:\personal\Projects\charlieplexor-cube\code\cube.X\img.c
+[v _img_set img_set `(v  1 e 1 0 ]
+{
+[v img_set@mask mask `uc  1 a 1 wreg ]
+"15
+[v img_set@i i `i  1 a 2 3 ]
+"13
+[v img_set@mask mask `uc  1 a 1 wreg ]
+[v img_set@img img `*.4[8]uc  1 p 1 0 ]
+"16
+[v img_set@mask mask `uc  1 a 1 2 ]
+"18
+} 0
+"7
+[v _img_copy img_copy `(v  1 e 1 0 ]
+{
+[v img_copy@p p `uc  1 a 1 wreg ]
+[v img_copy@p p `uc  1 a 1 wreg ]
+[v img_copy@img img `*.4[8]uc  1 p 1 24 ]
+"9
+[v img_copy@p p `uc  1 a 1 26 ]
+"10
+} 0
+"71 D:\personal\Projects\charlieplexor-cube\code\cube.X\scan.c
+[v _scan_copy scan_copy `(v  1 e 1 0 ]
+{
+[v scan_copy@p p `DCCuc  1 a 1 wreg ]
+"73
+[v scan_copy@y y `i  1 a 2 22 ]
+[v scan_copy@x x `i  1 a 2 20 ]
+"74
+[v scan_copy@pointer pointer `*.5uc  1 a 1 19 ]
+"71
+[v scan_copy@p p `DCCuc  1 a 1 wreg ]
+[v scan_copy@img img `*.4[8]uc  1 p 1 4 ]
+"75
+[v scan_copy@p p `DCCuc  1 a 1 18 ]
+"88
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 2 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
+} 0
+"59 D:\personal\Projects\charlieplexor-cube\code\cube.X\main.c
+[v _intrpt intrpt `II(v  1 e 1 0 ]
+{
+"64
+} 0
+"12 D:\personal\Projects\charlieplexor-cube\code\cube.X\scan.c
+[v _scan_irq scan_irq `(i  1 e 2 0 ]
+{
+"14
+[v scan_irq@step step `uc  1 s 1 step ]
+"15
+[v scan_irq@up up `[3]uc  1 s 3 up ]
+"16
+[v scan_irq@p p `uc  1 s 1 p ]
+"48
+} 0

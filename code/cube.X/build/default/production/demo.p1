@@ -1,0 +1,115 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[v F47 `uc ~T0 @X0 -> 8 `i t ]
+"19 img.h
+[v _img_set `(v ~T0 @X0 0 ef2`uc`*F47 ]
+[v F43 `uc ~T0 @X0 -> 8 `i t ]
+"18
+[v _img_copy `(v ~T0 @X0 0 ef2`uc`*F43 ]
+[v F54 `uc ~T0 @X0 -> 8 `i t ]
+"21
+[v _img_xor `(v ~T0 @X0 0 ef2`uc`*F54 ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;img.h: 6: typedef uint8_t imgbuf_t[8][8];
+[; ;img.h: 8: typedef enum {
+[; ;img.h: 9: sh_leftx,
+[; ;img.h: 10: sh_lefty,
+[; ;img.h: 11: sh_leftz,
+[; ;img.h: 12: sh_rightx,
+[; ;img.h: 13: sh_righty,
+[; ;img.h: 14: sh_rightz,
+[; ;img.h: 15: sh_ovf
+[; ;img.h: 16: } shift_t;
+[; ;img.h: 18: extern void img_copy(uint8_t p, uint8_t img[8][8]);
+[; ;img.h: 19: extern void img_set(uint8_t mask, uint8_t img[8][8]);
+[; ;img.h: 20: extern void img_inv(uint8_t img[8][8]);
+[; ;img.h: 21: extern void img_xor(uint8_t x, uint8_t img[8][8]);
+[; ;img.h: 22: extern void img_shift(shift_t sh, uint8_t img[8][8]);
+[; ;img.h: 23: extern void img_setpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8], uint8_t val);
+[; ;img.h: 24: extern uint8_t img_getpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8]);
+[v F30 `uc ~T0 @X0 -> 8 `i t ]
+"6 demo.c
+[v _image `F30 ~T0 @X0 -> 8 `i e ]
+[; ;demo.c: 6: imgbuf_t image;
+"8
+[v _demo_init `(v ~T0 @X0 1 ef ]
+"9
+{
+[; ;demo.c: 8: void demo_init(void)
+[; ;demo.c: 9: {
+[e :U _demo_init ]
+[f ]
+[; ;demo.c: 10: img_set(0xFF, image);
+"10
+[e ( _img_set (2 , -> -> 255 `i `uc &U _image ]
+[; ;demo.c: 11: img_copy(0, image);
+"11
+[e ( _img_copy (2 , -> -> 0 `i `uc &U _image ]
+[; ;demo.c: 12: }
+"12
+[e :UE 1 ]
+}
+"14
+[v _demo_monitor `(v ~T0 @X0 1 ef ]
+"15
+{
+[; ;demo.c: 14: void demo_monitor(void)
+[; ;demo.c: 15: {
+[e :U _demo_monitor ]
+[f ]
+"16
+[v F77 `ui ~T0 @X0 1 s cnt ]
+[i F77
+-> 65535 `ui
+]
+[; ;demo.c: 16: static uint16_t cnt = 0xFFFF;
+[; ;demo.c: 17: if (--cnt) return;
+"17
+[e $ ! != =- F77 -> -> 1 `i `ui -> -> 0 `i `ui 3  ]
+[e $UE 2  ]
+[e :U 3 ]
+[; ;demo.c: 18: cnt = 0xFFFF;
+"18
+[e = F77 -> 65535 `ui ]
+[; ;demo.c: 19: {
+"19
+{
+[; ;demo.c: 20: img_xor(0xFF, image);
+"20
+[e ( _img_xor (2 , -> -> 255 `i `uc &U _image ]
+[; ;demo.c: 21: img_copy(0, image);
+"21
+[e ( _img_copy (2 , -> -> 0 `i `uc &U _image ]
+"22
+}
+[; ;demo.c: 22: }
+[; ;demo.c: 23: }
+"23
+[e :UE 2 ]
+}

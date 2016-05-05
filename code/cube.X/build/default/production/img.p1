@@ -1,0 +1,542 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[v F43 `uc ~T0 @X0 -> 8 `i t ]
+[v F75 `uc ~T0 @X0 -> 8 `i t ]
+"4 img.c
+[v _scan_copy `(v ~T0 @X0 0 ef2`uc`*F75 ]
+[v F47 `uc ~T0 @X0 -> 8 `i t ]
+[v F50 `uc ~T0 @X0 -> 8 `i t ]
+[v F54 `uc ~T0 @X0 -> 8 `i t ]
+"38
+[c E31 0 1 2 3 4 5 6 .. ]
+[n E31 . sh_leftx sh_lefty sh_leftz sh_rightx sh_righty sh_rightz sh_ovf  ]
+[v F58 `uc ~T0 @X0 -> 8 `i t ]
+[v F64 `uc ~T0 @X0 -> 8 `i t ]
+[v F71 `uc ~T0 @X0 -> 8 `i t ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;img.h: 6: typedef uint8_t imgbuf_t[8][8];
+[; ;img.h: 8: typedef enum {
+[; ;img.h: 9: sh_leftx,
+[; ;img.h: 10: sh_lefty,
+[; ;img.h: 11: sh_leftz,
+[; ;img.h: 12: sh_rightx,
+[; ;img.h: 13: sh_righty,
+[; ;img.h: 14: sh_rightz,
+[; ;img.h: 15: sh_ovf
+[; ;img.h: 16: } shift_t;
+[; ;img.h: 18: extern void img_copy(uint8_t p, uint8_t img[8][8]);
+[; ;img.h: 19: extern void img_set(uint8_t mask, uint8_t img[8][8]);
+[; ;img.h: 20: extern void img_inv(uint8_t img[8][8]);
+[; ;img.h: 21: extern void img_xor(uint8_t x, uint8_t img[8][8]);
+[; ;img.h: 22: extern void img_shift(shift_t sh, uint8_t img[8][8]);
+[; ;img.h: 23: extern void img_setpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8], uint8_t val);
+[; ;img.h: 24: extern uint8_t img_getpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8]);
+[; ;img.c: 4: extern void scan_copy(uint8_t p, uint8_t img[8][8]);
+"7 img.c
+[v _img_copy `(v ~T0 @X0 1 ef2`uc`*F43 ]
+"8
+{
+[; ;img.c: 7: void img_copy(uint8_t p, uint8_t img[8][8])
+[; ;img.c: 8: {
+[e :U _img_copy ]
+"7
+[v _p `uc ~T0 @X0 1 r1 ]
+[v F78 `uc ~T0 @X0 -> 8 `i t ]
+[v _img `*F78 ~T0 @X0 1 r2 ]
+"8
+[f ]
+[; ;img.c: 9: scan_copy(p, img);
+"9
+[e ( _scan_copy (2 , _p _img ]
+[; ;img.c: 10: }
+"10
+[e :UE 1 ]
+}
+"13
+[v _img_set `(v ~T0 @X0 1 ef2`uc`*F47 ]
+"14
+{
+[; ;img.c: 13: void img_set(uint8_t mask, uint8_t img[8][8])
+[; ;img.c: 14: {
+[e :U _img_set ]
+"13
+[v _mask `uc ~T0 @X0 1 r1 ]
+[v F81 `uc ~T0 @X0 -> 8 `i t ]
+[v _img `*F81 ~T0 @X0 1 r2 ]
+"14
+[f ]
+"15
+[v _i `i ~T0 @X0 1 a ]
+[; ;img.c: 15: int16_t i;
+[; ;img.c: 16: for (i = sizeof(imgbuf_t)-1; i >= 0; i--)
+"16
+{
+[v F30 `uc ~T0 @X0 -> 8 `i t ]
+[e = _i -> - -> * -> 8 `i * -> 8 `i # `uc `ui -> -> 1 `i `ui `i ]
+[e $ >= _i -> 0 `i 3  ]
+[e $U 4  ]
+"17
+[e :U 3 ]
+[; ;img.c: 17: ((uint8_t *)&img)[i] = mask;
+[e = *U + -> &U _img `*uc * -> _i `x -> -> # *U -> &U _img `*uc `i `x _mask ]
+"16
+[e -- _i -> 1 `i ]
+[e $ >= _i -> 0 `i 3  ]
+[e :U 4 ]
+"17
+}
+[; ;img.c: 18: }
+"18
+[e :UE 2 ]
+}
+"21
+[v _img_inv `(v ~T0 @X0 1 ef1`*F50 ]
+"22
+{
+[; ;img.c: 21: extern void img_inv(uint8_t img[8][8])
+[; ;img.c: 22: {
+[e :U _img_inv ]
+[v F86 `uc ~T0 @X0 -> 8 `i t ]
+"21
+[v _img `*F86 ~T0 @X0 1 r1 ]
+"22
+[f ]
+"23
+[v _i `i ~T0 @X0 1 a ]
+[; ;img.c: 23: int16_t i;
+[; ;img.c: 24: for (i = sizeof(imgbuf_t)-1; i >= 0; i--)
+"24
+{
+[e = _i -> - -> * -> 8 `i * -> 8 `i # `uc `ui -> -> 1 `i `ui `i ]
+[e $ >= _i -> 0 `i 7  ]
+[e $U 8  ]
+"25
+[e :U 7 ]
+[; ;img.c: 25: ((uint8_t *)&img)[i] = ~(((uint8_t *)&img)[i]);
+[e = *U + -> &U _img `*uc * -> _i `x -> -> # *U -> &U _img `*uc `i `x -> ~ -> *U + -> &U _img `*uc * -> _i `x -> -> # *U -> &U _img `*uc `i `x `i `uc ]
+"24
+[e -- _i -> 1 `i ]
+[e $ >= _i -> 0 `i 7  ]
+[e :U 8 ]
+"25
+}
+[; ;img.c: 26: }
+"26
+[e :UE 6 ]
+}
+"29
+[v _img_xor `(v ~T0 @X0 1 ef2`uc`*F54 ]
+"30
+{
+[; ;img.c: 29: void img_xor(uint8_t x, uint8_t img[8][8])
+[; ;img.c: 30: {
+[e :U _img_xor ]
+"29
+[v _x `uc ~T0 @X0 1 r1 ]
+[v F93 `uc ~T0 @X0 -> 8 `i t ]
+[v _img `*F93 ~T0 @X0 1 r2 ]
+"30
+[f ]
+"31
+[v _i `i ~T0 @X0 1 a ]
+[; ;img.c: 31: int16_t i;
+[; ;img.c: 32: for (i = sizeof(imgbuf_t)-1; i >= 0; i--)
+"32
+{
+[e = _i -> - -> * -> 8 `i * -> 8 `i # `uc `ui -> -> 1 `i `ui `i ]
+[e $ >= _i -> 0 `i 11  ]
+[e $U 12  ]
+"33
+[e :U 11 ]
+[; ;img.c: 33: ((uint8_t *)&img)[i] ^= x;
+[e =^ *U + -> &U _img `*uc * -> _i `x -> -> # *U -> &U _img `*uc `i `x _x ]
+"32
+[e -- _i -> 1 `i ]
+[e $ >= _i -> 0 `i 11  ]
+[e :U 12 ]
+"33
+}
+[; ;img.c: 34: }
+"34
+[e :UE 10 ]
+}
+"37
+[v _img_shift `(v ~T0 @X0 1 ef2`E31`*F58 ]
+"38
+{
+[; ;img.c: 37: void img_shift(shift_t sh, uint8_t img[8][8])
+[; ;img.c: 38: {
+[e :U _img_shift ]
+"37
+[v _sh `E31 ~T0 @X0 1 r1 ]
+[v F99 `uc ~T0 @X0 -> 8 `i t ]
+[v _img `*F99 ~T0 @X0 1 r2 ]
+"38
+[f ]
+"39
+[v _i `c ~T0 @X0 1 a ]
+[v _x `c ~T0 @X0 1 a ]
+[v _y `c ~T0 @X0 1 a ]
+[; ;img.c: 39: int8_t i,x,y;
+[; ;img.c: 40: switch (sh)
+"40
+[e $U 16  ]
+[; ;img.c: 41: {
+"41
+{
+[; ;img.c: 42: case sh_leftx:
+"42
+[e :U 17 ]
+[; ;img.c: 43: for(x = 7; x > 0; --x)
+"43
+{
+[e = _x -> -> 7 `i `c ]
+[e $ > -> _x `i -> 0 `i 18  ]
+[e $U 19  ]
+"44
+[e :U 18 ]
+[; ;img.c: 44: for (y = 7; y >= 0; --y)
+{
+[e = _y -> -> 7 `i `c ]
+[e $ >= -> _y `i -> 0 `i 21  ]
+[e $U 22  ]
+"45
+[e :U 21 ]
+[; ;img.c: 45: img[x][y] = img[x-1][y];
+[e = *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux *U + &U *U + _img * -> - -> _x `i -> 1 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> - -> _x `i -> 1 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux ]
+"44
+[e =- _y -> -> 1 `i `c ]
+[e $ >= -> _y `i -> 0 `i 21  ]
+[e :U 22 ]
+"45
+}
+"43
+[e =- _x -> -> 1 `i `c ]
+[e $ > -> _x `i -> 0 `i 18  ]
+[e :U 19 ]
+"45
+}
+[; ;img.c: 46: for (y = 7; y >= 0; --y)
+"46
+{
+[e = _y -> -> 7 `i `c ]
+[e $ >= -> _y `i -> 0 `i 24  ]
+[e $U 25  ]
+"47
+[e :U 24 ]
+[; ;img.c: 47: img[0][y] = 0;
+[e = *U + &U *U + _img * -> -> 0 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> -> 0 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux -> -> 0 `i `uc ]
+"46
+[e =- _y -> -> 1 `i `c ]
+[e $ >= -> _y `i -> 0 `i 24  ]
+[e :U 25 ]
+"47
+}
+[; ;img.c: 48: break;
+"48
+[e $U 15  ]
+[; ;img.c: 49: case sh_lefty:
+"49
+[e :U 27 ]
+[; ;img.c: 50: for(y = 7; y > 0; --y)
+"50
+{
+[e = _y -> -> 7 `i `c ]
+[e $ > -> _y `i -> 0 `i 28  ]
+[e $U 29  ]
+"51
+[e :U 28 ]
+[; ;img.c: 51: for (x = 7; x >= 0; --x)
+{
+[e = _x -> -> 7 `i `c ]
+[e $ >= -> _x `i -> 0 `i 31  ]
+[e $U 32  ]
+"52
+[e :U 31 ]
+[; ;img.c: 52: img[x][y] = img[x][y-1];
+[e = *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> - -> _y `i -> 1 `i `ui `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux ]
+"51
+[e =- _x -> -> 1 `i `c ]
+[e $ >= -> _x `i -> 0 `i 31  ]
+[e :U 32 ]
+"52
+}
+"50
+[e =- _y -> -> 1 `i `c ]
+[e $ > -> _y `i -> 0 `i 28  ]
+[e :U 29 ]
+"52
+}
+[; ;img.c: 53: for (x = 7; x >= 0; --x)
+"53
+{
+[e = _x -> -> 7 `i `c ]
+[e $ >= -> _x `i -> 0 `i 34  ]
+[e $U 35  ]
+"54
+[e :U 34 ]
+[; ;img.c: 54: img[x][0] = 0;
+[e = *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux -> -> 0 `i `uc ]
+"53
+[e =- _x -> -> 1 `i `c ]
+[e $ >= -> _x `i -> 0 `i 34  ]
+[e :U 35 ]
+"54
+}
+[; ;img.c: 55: break;
+"55
+[e $U 15  ]
+[; ;img.c: 56: case sh_leftz:
+"56
+[e :U 37 ]
+[; ;img.c: 57: for (i = sizeof(imgbuf_t)-1; i >= 0; i--)
+"57
+{
+[e = _i -> - -> * -> 8 `i * -> 8 `i # `uc `ui -> -> 1 `i `ui `c ]
+[e $ >= -> _i `i -> 0 `i 38  ]
+[e $U 39  ]
+"58
+[e :U 38 ]
+[; ;img.c: 58: ((uint8_t *)&img)[i] <<= 1;
+[e =<< *U + -> &U _img `*uc * -> _i `x -> -> # *U -> &U _img `*uc `i `x -> 1 `i ]
+"57
+[e -- _i -> -> 1 `i `c ]
+[e $ >= -> _i `i -> 0 `i 38  ]
+[e :U 39 ]
+"58
+}
+[; ;img.c: 59: break;
+"59
+[e $U 15  ]
+[; ;img.c: 60: case sh_rightx:
+"60
+[e :U 41 ]
+[; ;img.c: 61: for(x = 0; x < 7; ++x)
+"61
+{
+[e = _x -> -> 0 `i `c ]
+[e $ < -> _x `i -> 7 `i 42  ]
+[e $U 43  ]
+"62
+[e :U 42 ]
+[; ;img.c: 62: for (y = 7; y >= 0; --y)
+{
+[e = _y -> -> 7 `i `c ]
+[e $ >= -> _y `i -> 0 `i 45  ]
+[e $U 46  ]
+"63
+[e :U 45 ]
+[; ;img.c: 63: img[x][y] = img[x+1][y];
+[e = *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux *U + &U *U + _img * -> + -> _x `i -> 1 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> + -> _x `i -> 1 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux ]
+"62
+[e =- _y -> -> 1 `i `c ]
+[e $ >= -> _y `i -> 0 `i 45  ]
+[e :U 46 ]
+"63
+}
+"61
+[e =+ _x -> -> 1 `i `c ]
+[e $ < -> _x `i -> 7 `i 42  ]
+[e :U 43 ]
+"63
+}
+[; ;img.c: 64: for (y = 7; y >= 0; --y)
+"64
+{
+[e = _y -> -> 7 `i `c ]
+[e $ >= -> _y `i -> 0 `i 48  ]
+[e $U 49  ]
+"65
+[e :U 48 ]
+[; ;img.c: 65: img[7][y] = 0;
+[e = *U + &U *U + _img * -> -> 7 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> -> 7 `i `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux -> -> 0 `i `uc ]
+"64
+[e =- _y -> -> 1 `i `c ]
+[e $ >= -> _y `i -> 0 `i 48  ]
+[e :U 49 ]
+"65
+}
+[; ;img.c: 66: break;
+"66
+[e $U 15  ]
+[; ;img.c: 67: case sh_righty:
+"67
+[e :U 51 ]
+[; ;img.c: 68: for(y = 0; y < 7; ++y)
+"68
+{
+[e = _y -> -> 0 `i `c ]
+[e $ < -> _y `i -> 7 `i 52  ]
+[e $U 53  ]
+"69
+[e :U 52 ]
+[; ;img.c: 69: for (x = x; y >= 0; --x)
+{
+[e = _x _x ]
+[e $ >= -> _y `i -> 0 `i 55  ]
+[e $U 56  ]
+"70
+[e :U 55 ]
+[; ;img.c: 70: img[x][y] = img[x][y+1];
+[e = *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> _y `uc `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> + -> _y `i -> 1 `i `ui `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux ]
+"69
+[e =- _x -> -> 1 `i `c ]
+[e $ >= -> _y `i -> 0 `i 55  ]
+[e :U 56 ]
+"70
+}
+"68
+[e =+ _y -> -> 1 `i `c ]
+[e $ < -> _y `i -> 7 `i 52  ]
+[e :U 53 ]
+"70
+}
+[; ;img.c: 71: for (x = 7; x >= 0; --x)
+"71
+{
+[e = _x -> -> 7 `i `c ]
+[e $ >= -> _x `i -> 0 `i 58  ]
+[e $U 59  ]
+"72
+[e :U 58 ]
+[; ;img.c: 72: img[x][7] = 0;
+[e = *U + &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x * -> -> -> 7 `i `ui `ux -> -> # *U &U *U + _img * -> _x `x -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `x `ui `ux -> -> 0 `i `uc ]
+"71
+[e =- _x -> -> 1 `i `c ]
+[e $ >= -> _x `i -> 0 `i 58  ]
+[e :U 59 ]
+"72
+}
+[; ;img.c: 73: break;
+"73
+[e $U 15  ]
+[; ;img.c: 74: case sh_rightz:
+"74
+[e :U 61 ]
+[; ;img.c: 75: for (i = sizeof(imgbuf_t)-1; i >= 0; i--)
+"75
+{
+[e = _i -> - -> * -> 8 `i * -> 8 `i # `uc `ui -> -> 1 `i `ui `c ]
+[e $ >= -> _i `i -> 0 `i 62  ]
+[e $U 63  ]
+"76
+[e :U 62 ]
+[; ;img.c: 76: ((uint8_t *)&img)[i] >>= 1;
+[e =>> *U + -> &U _img `*uc * -> _i `x -> -> # *U -> &U _img `*uc `i `x -> 1 `i ]
+"75
+[e -- _i -> -> 1 `i `c ]
+[e $ >= -> _i `i -> 0 `i 62  ]
+[e :U 63 ]
+"76
+}
+[; ;img.c: 77: break;
+"77
+[e $U 15  ]
+"78
+}
+[; ;img.c: 78: }
+[e $U 15  ]
+"40
+[e :U 16 ]
+[e [\ _sh , $ . `E31 0 17
+ , $ . `E31 1 27
+ , $ . `E31 2 37
+ , $ . `E31 3 41
+ , $ . `E31 4 51
+ , $ . `E31 5 61
+ 15 ]
+"78
+[e :U 15 ]
+[; ;img.c: 79: }
+"79
+[e :UE 14 ]
+}
+"83
+[v _img_setpix `(v ~T0 @X0 1 ef5`uc`uc`uc`*F64`uc ]
+"84
+{
+[; ;img.c: 83: extern void img_setpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8], uint8_t val)
+[; ;img.c: 84: {
+[e :U _img_setpix ]
+"83
+[v _x `uc ~T0 @X0 1 r1 ]
+[v _y `uc ~T0 @X0 1 r2 ]
+[v _z `uc ~T0 @X0 1 r3 ]
+[v F111 `uc ~T0 @X0 -> 8 `i t ]
+[v _img `*F111 ~T0 @X0 1 r4 ]
+[v _val `uc ~T0 @X0 1 r5 ]
+"84
+[f ]
+[; ;img.c: 85: if (x > 7 || y > 7 || z > 7) return;
+"85
+[e $ ! || || > -> _x `i -> 7 `i > -> _y `i -> 7 `i > -> _z `i -> 7 `i 66  ]
+[e $UE 65  ]
+[e :U 66 ]
+[; ;img.c: 86: val = (val) ? 1 : 0;
+"86
+[e = _val -> ? != -> _val `i -> -> -> 0 `i `uc `i : -> 1 `i -> 0 `i `uc ]
+[; ;img.c: 87: img[x][y] &= ~(1 << z);
+"87
+[e =& *U + &U *U + _img * -> _x `ux -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `ux * -> _y `ux -> -> # *U &U *U + _img * -> _x `ux -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `ux `ui `ux -> ~ << -> 1 `i _z `uc ]
+[; ;img.c: 88: img[x][y] |= val << z;
+"88
+[e =| *U + &U *U + _img * -> _x `ux -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `ux * -> _y `ux -> -> # *U &U *U + _img * -> _x `ux -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `ux `ui `ux -> << -> _val `i _z `uc ]
+[; ;img.c: 89: }
+"89
+[e :UE 65 ]
+}
+"92
+[v _img_getpix `(uc ~T0 @X0 1 ef4`uc`uc`uc`*F71 ]
+"93
+{
+[; ;img.c: 92: extern uint8_t img_getpix(uint8_t x, uint8_t y, uint8_t z, uint8_t img[8][8])
+[; ;img.c: 93: {
+[e :U _img_getpix ]
+"92
+[v _x `uc ~T0 @X0 1 r1 ]
+[v _y `uc ~T0 @X0 1 r2 ]
+[v _z `uc ~T0 @X0 1 r3 ]
+[v F117 `uc ~T0 @X0 -> 8 `i t ]
+[v _img `*F117 ~T0 @X0 1 r4 ]
+"93
+[f ]
+[; ;img.c: 94: if (x > 7 || y > 7 || z > 7) return 0;
+"94
+[e $ ! || || > -> _x `i -> 7 `i > -> _y `i -> 7 `i > -> _z `i -> 7 `i 68  ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 67  ]
+[e :U 68 ]
+[; ;img.c: 95: return (img[x][y] & (1 << z)) ? 1 : 0;
+"95
+[e ) -> ? != & -> *U + &U *U + _img * -> _x `ux -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `ux * -> _y `ux -> -> # *U &U *U + _img * -> _x `ux -> * -> # *U &U *U _img `ui -> -> 8 `i `ui `ux `ui `ux `i << -> 1 `i _z -> 0 `i : -> 1 `i -> 0 `i `uc ]
+[e $UE 67  ]
+[; ;img.c: 96: }
+"96
+[e :UE 67 ]
+}
